@@ -51,7 +51,7 @@ app.get("/students/:id", (req,res)=>{
     })
     console.log(foundStudent)
 
-    res.send(req.params)
+    res.send(foundStudent)
 })
 
 app.listen(3000,()=>{
