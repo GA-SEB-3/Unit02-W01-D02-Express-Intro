@@ -44,6 +44,7 @@ app.get('/home',(request,response)=>{
 })
 
 
+// req.params
 app.get("/students/:id", (req,res)=>{
 
     let foundStudent = students.find((oneStudent)=>{
@@ -52,6 +53,24 @@ app.get("/students/:id", (req,res)=>{
     console.log(foundStudent)
 
     res.send(foundStudent)
+})
+
+app.get("/studnet",(req,res)=>{
+
+    let foundStudent = students.find((oneStudent)=>{
+        return oneStudent.id == req.query.id
+    })
+    res.send(foundStudent)
+})
+
+// parameter queries
+app.get("/search",(req,res)=>{
+
+    const foundStudents = students.filter((oneStudent)=>{
+        return oneStudent.country.toLowerCase() == req.query.country.toLocaleLowerCase()
+    })
+
+    res.send(foundStudents)
 })
 
 app.listen(3000,()=>{
