@@ -66,11 +66,19 @@ app.get("/studnet",(req,res)=>{
 // parameter queries
 app.get("/search",(req,res)=>{
 
-    const foundStudents = students.filter((oneStudent)=>{
-        return oneStudent.country.toLowerCase() == req.query.country.toLocaleLowerCase()
-    })
+    if(req.query.country){
+        const foundStudents = students.filter((oneStudent)=>{
+            return oneStudent.country.toLowerCase() == req.query.country.toLocaleLowerCase()
+        })
+    
+        res.send(foundStudents)
+        return 
+    
+    }
+    else if(req.query.id){
 
-    res.send(foundStudents)
+    }
+
 })
 
 app.listen(3000,()=>{
